@@ -4,12 +4,12 @@ Name: kio-admin
 Version: 23.08.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
-Source0: https://invent.kde.org/plasma-mobile/%{name}/-/archive/master/%{name}-master.tar.bz2
+Source0: https://invent.kde.org/system/%{name}/-/archive/master/%{name}-master.tar.bz2
 %else
 Source0: https://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %endif
 Summary: Manage files as administrator using the admin:// KIO protocol.
-URL: https://github.com/kio-admin/kio-admin
+URL: https://invent.kde.org/system/%{name}
 License: GPL
 Group: System/Libraries
 BuildRequires: cmake ninja
