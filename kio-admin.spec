@@ -2,7 +2,7 @@
 
 Name: kio-admin
 Version: 23.08.4
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/system/%{name}/-/archive/master/%{name}-master.tar.bz2
 %else
