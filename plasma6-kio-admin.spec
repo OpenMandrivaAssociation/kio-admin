@@ -1,12 +1,23 @@
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: plasma6-kio-admin
-Version: 24.01.95
-Release: %{?git:0.%{git}.}1
+Version: 24.01.96
+Release: %{?git:%{?git:0.%{git}.}0.%{git}.}1
 %if 0%{?git:1}
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/system/kio-admin/-/archive/%{gitbranch}/kio-admin-%{gitbranchd}.tar.bz2#/kio-admin-%{git}.tar.bz2
+%else
 Source0: https://invent.kde.org/system/kio-admin/-/archive/master/kio-admin-master.tar.bz2
+%endif
+%else
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/system/kio-admin/-/archive/%{gitbranch}/kio-admin-%{gitbranchd}.tar.bz2#/kio-admin-%{git}.tar.bz2
 %else
 Source0: https://download.kde.org/%{stable}/release-service/%{version}/src/kio-admin-%{version}.tar.xz
+%endif
 %endif
 Summary: Manage files as administrator using the admin:// KIO protocol.
 URL: https://invent.kde.org/system/kio-admin
@@ -27,7 +38,7 @@ BuildRequires: pkgconfig(polkit-qt6-core-1)
 Manage files as administrator using the admin:// KIO protocol.
 
 %prep
-%autosetup -p1 -n kio-admin-%{version}
+%autosetup -p1 -n kio-admin-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DQT_MAJOR_VERSION=6 \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
