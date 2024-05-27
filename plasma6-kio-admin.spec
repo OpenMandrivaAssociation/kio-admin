@@ -33,6 +33,7 @@ BuildRequires: cmake(KF6CoreAddons)
 BuildRequires: cmake(KF6I18n)
 BuildRequires: cmake(KF6KIO)
 BuildRequires: pkgconfig(polkit-qt6-core-1)
+BuildRequires: atomic-devel
 
 %description
 Manage files as administrator using the admin:// KIO protocol.
