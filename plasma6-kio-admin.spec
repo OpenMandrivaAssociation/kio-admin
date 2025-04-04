@@ -5,7 +5,7 @@
 
 Name: plasma6-kio-admin
 Version: 24.12.3
-Release: %{?git:%{?git:0.%{git}.}0.%{git}.}2
+Release: %{?git:%{?git:0.%{git}.}0.%{git}.}3
 %if 0%{?git:1}
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/system/kio-admin/-/archive/%{gitbranch}/kio-admin-%{gitbranchd}.tar.bz2#/kio-admin-%{git}.tar.bz2
