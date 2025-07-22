@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: kio-admin
-Version: 25.04.0
+Version: 25.04.3
 Release: %{?git:%{?git:0.%{git}.}0.%{git}.}1
 %if 0%{?git:1}
 %if 0%{?git:1}
@@ -23,7 +23,6 @@ Summary: Manage files as administrator using the admin:// KIO protocol.
 URL: https://invent.kde.org/system/kio-admin
 License: GPL
 Group: System/Libraries
-BuildRequires: cmake ninja
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt6Core)
 BuildRequires: cmake(Qt6DBus)
@@ -35,24 +34,16 @@ BuildRequires: cmake(KF6KIO)
 BuildRequires: pkgconfig(polkit-qt6-core-1)
 BuildRequires: atomic-devel
 
+%rename plasma6-kio-admin
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+BuildOption:	-DQT_MAJOR_VERSION=6
+
 %description
 Manage files as administrator using the admin:// KIO protocol.
 
-%prep
-%autosetup -p1 -n kio-admin-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DQT_MAJOR_VERSION=6 \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-%find_lang kio5_admin
-
-%files -f kio5_admin.lang
+%files -f %{name}.lang
 %{_libdir}/libexec/kf6/kio-admin-helper
 %{_datadir}/dbus-1/system-services/org.kde.kio.admin.service
 %{_datadir}/dbus-1/system.d/org.kde.kio.admin.conf
