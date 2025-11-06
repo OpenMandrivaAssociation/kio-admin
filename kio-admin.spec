@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: kio-admin
-Version: 25.08.2
+Version: 25.08.3
 Release: %{?git:%{?git:0.%{git}.}0.%{git}.}1
 %if 0%{?git:1}
 %if 0%{?git:1}
