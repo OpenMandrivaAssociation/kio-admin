@@ -5,7 +5,7 @@
 
 Name: kio-admin
 Version: 25.08.3
-Release: %{?git:%{?git:0.%{git}.}0.%{git}.}1
+Release: %{?git:%{?git:0.%{git}.}0.%{git}.}2
 %if 0%{?git:1}
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/system/kio-admin/-/archive/%{gitbranch}/kio-admin-%{gitbranchd}.tar.bz2#/kio-admin-%{git}.tar.bz2
